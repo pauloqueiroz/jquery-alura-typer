@@ -8,6 +8,25 @@ function fraseAleatoria() {
 	.always(toggleSpinner);
 }
 
+$("#botao-frase-id").click(buscaFrase);
+
+function buscaFrase() {
+	toggleSpinner();
+	var idFrase = $("#frase-id").val();
+	console.log('Busca frase '+ idFrase);
+	var data = {id:idFrase};
+	$.get('http://localhost:3000/frases', data, trocaFrase)
+	.fail(tratarErro)
+	.always(toggleSpinner);
+}
+
+function trocaFrase(data){
+	var frase = $(".frase");
+	frase.text(data.texto);
+	atualizaTamanhoFrase();
+    atualizaTempoInicial(data.tempo);
+}
+
 function trocaFraseAleatoria(data) {
     var frase = $(".frase");
     var numeroAleatorio = Math.floor(Math.random() * data.length);

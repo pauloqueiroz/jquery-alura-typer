@@ -78,3 +78,14 @@ function sincronizaPlacar(){
         console.log('Deu certo rsssssssssssss');
     })
 }
+
+function atualizaPlacar(){
+    $.get("http://localhost:3000/placar", function(data){
+        console.log("RSRSRSRSR");
+        console.log(data);
+        $(data).each(function(){
+            var linha = novaLinha(this.usuario, this.pontos);
+            $("tbody").append(linha);
+        });
+    });
+}

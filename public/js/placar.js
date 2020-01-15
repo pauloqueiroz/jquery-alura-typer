@@ -7,7 +7,6 @@ function inserePlacar() {
     var numPalavras = $("#contador-palavras").text();
 
     var linha = novaLinha(usuario, numPalavras);
-    linha.find(".botao-remover").click(removeLinha);
 
     corpoTabela.append(linha);
     $(".placar").slideDown(500);
@@ -38,7 +37,7 @@ function novaLinha(usuario, palavras) {
     linha.append(colunaUsuario);
     linha.append(colunaPalavras);
     linha.append(colunaRemover);
-
+    linha.find(".botao-remover").click(removeLinha);
     return linha;
 }
 
